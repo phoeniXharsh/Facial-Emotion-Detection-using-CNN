@@ -13,3 +13,16 @@ This is a Gradio-based emotion detection application deployed on Hugging Face Sp
 
 ## Deployed App
 [Click here to access the app](https://huggingface.co/spaces/phoeniXharsh/emotion-detection)
+
+---
+title: {{title}}
+emoji: {{emoji}}
+colorFrom: {{colorFrom}}
+colorTo: {{colorTo}}
+sdk: {{sdk}}
+sdk_version: "{{sdkVersion}}"
+app_file: app.py
+pinned: false
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
