@@ -1,3 +1,14 @@
+---
+title: Emotion Detection App
+emoji: 🧠
+colorFrom: teal
+colorTo: purple
+sdk: gradio
+sdk_version: "3.41.2"
+app_file: app.py
+pinned: false
+---
+
 # Emotion Detection App
 
 This is a Gradio-based emotion detection application deployed on Hugging Face Spaces. Upload an image to detect emotions.
@@ -13,18 +24,3 @@ This is a Gradio-based emotion detection application deployed on Hugging Face Sp
 
 ## Deployed App
 [Click here to access the app](https://huggingface.co/spaces/phoeniXharsh/emotion-detection)
-
----
-
-title: Emotion Detection App
-emoji: 🧠
-colorFrom: teal
-colorTo: purple
-sdk: gradio
-sdk_version: "3.41.2"
-app_file: app.py
-pinned: false
-
----
-
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
