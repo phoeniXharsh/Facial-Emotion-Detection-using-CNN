@@ -35,10 +35,10 @@ def predict_emotion(image):
 
 # Define the Gradio interface
 sample_images = [
-    ("emotion-detection/sample-images/sample_img.jpg", "Sample Image 1"),
-    ("emotion-detection/sample-images/sample_img2.jpg", "Sample Image 2"),
-    ("emotion-detection/sample-images/sample_img3.jpg", "Sample Image 3"),
-    ("emotion-detection/sample-images/sample_img4.jpg", "Sample Image 4"),
+    "emotion-detection/sample-images/sample_img.jpg",
+    "emotion-detection/sample-images/sample_img2.jpg",
+    "emotion-detection/sample-images/sample_img3.jpg",
+    "emotion-detection/sample-images/sample_img4.jpg",
 ]
 
 interface = gr.Interface(
