@@ -1,7 +1,7 @@
 ---
 title: Emotion Detection App
 emoji: 🧠
-colorFrom: teal
+colorFrom: indigo
 colorTo: purple
 sdk: gradio
 sdk_version: "3.41.2"
