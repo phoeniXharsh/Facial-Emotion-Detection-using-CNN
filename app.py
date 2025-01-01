@@ -3,6 +3,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import img_to_array
 import gradio as gr
+import shutil
 
 # Path to the model file
 MODEL_PATH = 'Final_Resnet50_Best_model.keras'
@@ -34,18 +35,29 @@ def predict_emotion(image):
     return predicted_emotion
 
 # Define the Gradio interface
+BASE_DIR = os.path.abspath("emotion-detection/sample-images/")
 sample_images = [
-    "emotion-detection/sample-images/sample_img.jpg",
-    "emotion-detection/sample-images/sample_img2.jpg",
-    "emotion-detection/sample-images/sample_img3.jpg",
-    "emotion-detection/sample-images/sample_img4.jpg",
+    (os.path.join(BASE_DIR, "sample_img.jpg"), "Sample Image 1"),
+    (os.path.join(BASE_DIR, "sample_img2.jpg"), "Sample Image 2"),
+    (os.path.join(BASE_DIR, "sample_img3.jpg"), "Sample Image 3"),
+    (os.path.join(BASE_DIR, "sample_img4.jpg"), "Sample Image 4"),
 ]
+# Ensure images are copied to the Gradio cache directory
+GRADIO_CACHE_DIR = "gradio_cache"
+os.makedirs(GRADIO_CACHE_DIR, exist_ok=True)
+
+cached_sample_images = []
+for image_path, label in sample_images:
+    cached_path = os.path.join(GRADIO_CACHE_DIR, os.path.basename(image_path))
+    shutil.copy(image_path, cached_path)
+    cached_sample_images.append((cached_path, label))
+
 
 interface = gr.Interface(
     fn=predict_emotion,
     inputs=gr.Image(type="pil"),
     outputs="text",
-    examples=sample_images,  # Add sample images here
+    examples=cached_sample_images,
     title="Emotion Detection",
     description=(
         "Upload/Click an image or select a sample image to detect the emotion."
