@@ -1,10 +1,17 @@
+import os
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import img_to_array
 import gradio as gr
 
+# Path to the model file
+MODEL_PATH = 'Final_Resnet50_Best_model.keras'
+
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model file '{MODEL_PATH}' is missing. Please upload the file to the repository.")
+
 # Load the pre-trained model
-model = tf.keras.models.load_model('Final_Resnet50_Best_model.keras')
+model = tf.keras.models.load_model(MODEL_PATH)
 
 # Emotion labels dictionary
 emotion_labels = {'angry': 0, 'disgust': 1, 'fear': 2, 'happy': 3, 'neutral': 4, 'sad': 5, 'surprise': 6}
@@ -27,12 +34,22 @@ def predict_emotion(image):
     return predicted_emotion
 
 # Define the Gradio interface
+sample_images = [
+    ("emotion-detection/sample-images/sample_img.jpg", "Sample Image 1"),
+    ("emotion-detection/sample-images/sample_img2.jpg", "Sample Image 2"),
+    ("emotion-detection/sample-images/sample_img3.jpg", "Sample Image 3"),
+    ("emotion-detection/sample-images/sample_img4.jpg", "Sample Image 4"),
+]
+
 interface = gr.Interface(
     fn=predict_emotion,
     inputs=gr.Image(type="pil"),
     outputs="text",
+    examples=sample_images,  # Add sample images here
     title="Emotion Detection",
-    description="Upload an image to detect the emotion."
+    description=(
+        "Upload/Click an image or select a sample image to detect the emotion."
+    ),
 )
 
 # Launch the app
