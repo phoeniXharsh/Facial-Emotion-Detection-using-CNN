@@ -39,6 +39,8 @@ sample_images = [
     "sample-images/sample_img2.jpg",
     "sample-images/sample_img3.jpg",
     "sample-images/sample_img4.jpg",
+    "sample-images/sample_img5.jpg",
+    "sample-images/sample_img6.jpg",
 ]
 
 
